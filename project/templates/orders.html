@@ -1,0 +1,53 @@
+{% extends 'layout.html' %}
+{% block title %}| Orders {% endblock %}
+{% block content_in %}
+ <div class="pt-5 pb-5 mb-5">
+     <div class="row">
+         <div class="col-lg text-center mt-5 mb-3">
+             <h1 style="font-weight: 200;">
+                 <i class="fas fa-file-invoice"></i>&nbsp;&nbsp;Orders List
+             </h1>
+         </div>
+     </div>
+     <hr>
+     {% if l > 0 %}
+        <div class="row pb-5">
+         <div class="col m-5 pl-5 pr-5">
+             <div class="row mb-5">
+                 <table class="table m-0">
+                     <thead class="table-dark ">
+                         <tr>
+                             <th scope="col">ID</th>
+                             <th scope="col">Date</th>
+                             <th scope="col">Name</th>
+                             <th scope="col">Email</th>
+                             <th scope="col">Total Cost</th>
+                             <th scope="col"></th>
+                         </tr>
+                     </thead>
+                 </table>
+                 <table class="table table-hover">
+                     <tbody class="">
+                     {% for order in orders %}
+                         <tr>
+                             <th scope="row">{{ order.id }}</th>
+                             <td>{{ order.date_of_order.strftime("%d %B, %Y %I:%M %p") }}</td>
+                             <td>{{ order.name }}</td>
+                             <td>{{ order.email }}</td>
+                             <td>{{ order.displayCost }}</td>
+                             <td><a class="btn btn-warning" href="{{ url_for('order_details', order_id=order.id) }}">View Invoice</a></td>
+                         </tr>
+                     {% endfor %}
+                     </tbody>
+                 </table>
+             </div>
+         </div>
+     </div>
+     {% else %}
+         <div class="m-5 p-5 text-center">
+            <h3 class="display-5" style="font-family: Arial, Helvetica, sans-serif;">Currently no orders available.</h3>
+<!--            <a class="btn btn-info mb-5 pr-3 pl-3 rounded-pill" href="{{url_for('home')}}" role="button">Browse Shopping</a>-->
+        </div>
+     {% endif %}
+</div>
+{% endblock content_in %}

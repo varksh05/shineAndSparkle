@@ -1,0 +1,89 @@
+{% extends 'layout.html' %}
+
+{% block content_out %}
+<header>
+            <div class="header-center text-center">
+                <h1 class=" display-3 text-dark" style="font-weight: 300;"><i class="fas fa-gem"></i> Shine & Sparkles
+                </h1>
+                <h4>Jewellery tells a story, without even a single word, non-verbal communication of style.</h4>
+            </div>
+</header>
+<section id="description">
+    <div class="container">
+        <div class="row mt-5 pt-5 mb-5 pb-5">
+            <div class="col-lg-4">
+                <div class="w-100">
+                    <img src="{{url_for('static', filename='ring_landing.jpg')}}" class="img-fluid rounded w-100"
+                        alt="...">
+                </div>
+            </div>
+            <div class="col-lg">
+                <div class="mt-lg-5 mb-5 pt-lg-5 text-center">
+                    <h3 class="display-5 text-dark pl-5" style="text-transform: uppercase;">Create your Diamond Story</h3>
+                    <div class="text-justify"></div>
+                    <p class="lead pr-5 pl-5 pt-4 pb-3">Every ring has a story to tell. Its time for you to create your story now.</p>
+                    <a href="{{url_for('shop') }}" class="btn btn-info btn-lg rounded-pill pl-5 pr-5">Shop now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<section id="testimonial">
+    <div class="container">
+        <div class="row pb-5">
+            {% for testimonial in testimonials %}
+            <div class="col-lg mt-5">
+                <div class="card">
+                    <img src="{{url_for('static', filename=testimonial.image_file)}}" class="w-25 ml-4  rounded-pill">
+                    <div class="card-body">
+                        <h5 class="card-title">{{testimonial.name}}</h5>
+                        <p class="card-text lead">
+                            <i class="fa fa-quote-left" style="font-size: 28px;"></i>
+                            &nbsp;&nbsp;
+                            {{testimonial.desc}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<section id="branches">
+    <div class="container pt-5 pb-5">
+        <div class="section-title text-lg-left text-center ml-lg-3">
+            <h2>Branches</h2>
+        </div>
+        <div class="row mt-3">
+            {% for branch in branches %}
+                <div class="col-md p-3">
+                    <div class="card rounded">
+                        <img src="{{url_for('static', filename=branch.image_file)}}" class="card-img-top" alt="...">
+                        <div class="card-body bg-dark rounded-bottom">
+                            <h5 class="card-title text-white">{{branch.name}}</h5>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<section id="gift-card">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg">
+                <div class="mt-lg-5 mb-5 pt-lg-5 text-center">
+                    <h1 class="text-dark mt-lg-3">Free e-Gift cards</h1>
+                    <p class="p-2 lead">Purchase free e-Gift cards on first online purchase</p>
+                    <p class="p-2">Limited Offer</p>
+                </div>
+            </div>
+            <div class="col-lg text-center">
+                <img class="w-75 m-lg-5 mb-5 img-fluid rounded" src="{{url_for('static', filename='SHINE&SPARKLES.png')}}" alt="Gift Card image">
+            </div>
+        </div>
+    </div>
+
+    </section>
+{% endblock content_out %}

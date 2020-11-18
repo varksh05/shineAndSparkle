@@ -1,0 +1,166 @@
+html,
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    scroll-behavior: smooth;
+}
+
+.container {
+    width: 1200px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-weight: 400;
+}
+
+.lead {
+    font-weight: 400;
+}
+
+.fa-file-invoice,
+.fa-shopping-cart {
+    font-size: 22px;
+    color: black;
+}
+
+/* Header */
+header {
+    background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.1)), url(hao-zhang.jpg);
+    background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.1)), url(hao-zhang.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 93.5vh;
+    color: #ffffff;
+    text-align: center;
+    background-attachment: fixed;
+}
+
+.header-center {
+    position: absolute;
+    width: 1140px;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu {
+    border: none;
+    background-color: #2c2c2c;
+}
+
+.nav-item a {
+    color: white;
+    font-weight: 500;
+}
+
+.nav-item a:hover {
+    animation-duration: 1.5s;
+}
+
+.section-title h2 {
+    font-weight: 500;
+}
+
+/* Branches */
+
+#branches .card:hover {
+    animation: pulse;
+    animation-duration: 2s;
+}
+
+#branches .card {
+    border: none;
+}
+
+/* Testimonial */
+#testimonial {
+    background-image: linear-gradient(#00a2ff, aqua, skyblue);
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    font-weight: 300;
+}
+
+#testimonial .card {
+    background-color: inherit;
+    border: none;
+}
+
+
+/* Gift Card */
+#gift-card {
+    background-color: skyblue;
+}
+
+
+
+/* Footer */
+footer {
+    color: white;
+    background-color: black;
+}
+
+footer ul {
+    list-style: none;
+}
+
+footer ul li {
+    margin-top: 5px;
+}
+
+footer h6 {
+    color: gray;
+    text-transform: uppercase;
+}
+
+footer .app_download {
+    border: 2px solid white;
+    margin: 10px;
+}
+
+.top-border {
+    border-top: 2px solid gray;
+}
+
+.social-links li {
+    display: inline-block;
+    margin-right: 18px;
+    font-size: 18px;
+}
+
+.pay i {
+    padding-top: 10px;
+    padding-right: 10px;
+    font-size: 32px;
+    color: gray;
+}
+
+.social-links li a {
+    color: white;
+}
+
+.fa-facebook-f:hover {
+    color: #3b5998;
+}
+
+.fa-pinterest:hover {
+    color: #e60023;
+}
+
+.fa-instagram:hover {
+    color: #8134af;
+}
+
+.fa-twitter:hover {
+    color: #00acee;
+}

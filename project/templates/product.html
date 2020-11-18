@@ -1,0 +1,29 @@
+{% extends 'layout.html' %} {% block title %}| {{product_details.name}} {% endblock %} {% block
+    content_in %}
+    <div class="container pt-5 pb-3">
+      <div class="row">
+        <div class="col-lg-6">
+            <img class="w-100" src="{{url_for('static', filename=product_details.image_file)}}"></img>
+        </div>
+        <div class="col-lg p-5 text-center">
+            <h2 style="font-weight:300" class="text-left">{{ product_details.name }}</h2>
+            <hr>
+            <h4 class="text-lg-right m-5">{{ product_details.displayCost }}</h4>
+            <div class="row">
+                <div class="col-lg">
+                    <a href="{{url_for('empty_cart',product_name = product_details.name)}}" class="btn btn-danger w-100">Empty cart</a>
+                </div>
+                <div class="col-lg">
+                    <a href="{{url_for('add_to_cart',product_name = product_details.name)}}" class="btn btn-info w-100 mb-3">Add to Cart</a>
+                </div>
+                <div class="col-lg">
+                    <a href="{{url_for('buy_product', product_name = product_details.name)}}" class="btn btn-success w-100">Buy</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="container mt-5 mb-5 text-center">
+    </div>
+    {% endblock content_in %}
+    

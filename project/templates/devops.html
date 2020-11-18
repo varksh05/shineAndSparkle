@@ -1,0 +1,58 @@
+{% extends 'layout.html' %}
+
+{% block title %}| Devops {% endblock %}
+{% block content_in %}
+<section class="mb-5">
+    <div class="container pt-2">
+        <div class="row mt-5">
+            <div class="col-lg-7 mx-auto d-block text-center">
+                <img src="{{url_for('static', filename='nithu.png')}}"  class="w-25 rounded-circle"   alt="" >
+                <h1 class="display-5 mt-4"> Nithya Murali </h1>
+                <span class="text-muted"><strong>Queensland University of Technology</strong></span>
+                <p class="text-muted mt-1">Student</p>
+            </div>
+        </div>
+        <hr>
+        <div class="row mt-5 mb-5">
+            <div class="col text-center">
+                <h3 class="text-head" style="font-weight: 200;">
+                    Languages and Frameworks used for development
+                </h3>
+                <div class="row mt-5 text-center">
+                    <div class="col-sm">
+                        <h1 class=""><i class="fab fa-python"></i></h1>
+                        <p class="lead">Python</p>
+                    </div>
+                    <div class="col-sm">
+                        <h1 class="" style="font-family:'Times New Roman'">Flask</h1>
+                        <p class="lead">Web Framework</p>
+                    </div>
+                    <div class="col-sm">
+                        <h1 class=""><i class="fab fa-bootstrap"></i></h1>
+                        <p class="lead">Bootstrap</p>
+                    </div>
+                </div>
+                <div class="row mt-sm-5 text-center">
+                    <div class="col-sm">
+                        <h1 class=""><i class="fab fa-html5"></i></h1>
+                        <p class="lead">HTML5</p>
+                    </div>
+                    <div class="col-sm">
+                        <h1 class=""><i class="fab fa-css3-alt"></i></h1>
+                        <p class="lead">CSS3</p>
+                    </div>
+                    <div class="col-sm">
+                        <h1 class=""><i class="fa fa-database"></i></h1>
+                        <p class="lead">SQLite</p>
+                    </div>
+                </div>
+                <!-- <div class="row mt-5 mb-5 float-right">
+                    <div class="form-group">
+                        <a href="" class="btn btn-light"><i class="fa fa-linkedin"></i></a>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content_in %}

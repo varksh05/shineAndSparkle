@@ -1,0 +1,44 @@
+{% extends 'layout.html' %} {% block title %}| Products {% endblock %}
+
+{% block content_out %}
+
+<section id="gift-card">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg">
+                <div class="mt-lg-5 mb-5 pt-lg-5 text-center">
+                    <h1 class="text-dark mt-lg-3">Free e-Gift cards</h1>
+                    <p class="p-2 lead">Purchase free e-Gift cards on first online purchase</p>
+                    <p class="p-2">Limited Offer</p>
+                </div>
+            </div>
+            <div class="col-lg text-center">
+                <img class="w-75 m-lg-5 mb-5 img-fluid rounded" src="{{url_for('static', filename='SHINE&SPARKLES.png')}}" alt="Gift Card image">
+            </div>
+        </div>
+    </div>
+
+    </section>
+
+<section id="branches">
+    <div class="container pt-5 pb-5">
+        <div class="row mt-3">
+            {% for category in categorys %}
+            <div class="col-lg-6 pl-lg-5">
+                <div class="col-lg-8 ml-lg-5 p-3">
+                    <div class="card rounded">
+                        <a href="{{ url_for('products', product_type = category.product) }}">
+                            <img src="{{url_for('static', filename=category.image_file)}}" class="card-img-top" alt="...">
+                            <div class="card-body bg-dark rounded-bottom">
+                            <h5 class="card-title text-white">{{category.name}}</h5>
+                        </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% endblock content_out %}

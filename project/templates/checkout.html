@@ -1,0 +1,63 @@
+{% extends 'layout.html' %}
+
+{% block title %}| Orders {% endblock %}
+{% block content_in %}
+    <div class="container-fluid p-5 mb-5">
+        <div class="content-section">
+            <div class="row">
+                <div class="col-lg"></div>
+                <div class="col-lg text-center">
+                    <form method="post" action="">
+                    {{ form.hidden_tag() }}
+                        <fieldset class="form-group">
+                            <legend class="mb-4 lead" style="font-size: 28px">Billing Details</legend>
+                            <div class="form-group">
+                                {% if form.name.errors %}
+                                {{ form.name(class="form-control is-invalid", placeholder="Name") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.name.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                {{ form.name(class="form-control", placeholder="Name") }}
+                                {% endif %}
+                            </div>
+                            <div class="form-group">
+                                {% if form.email.errors %}
+                                {{ form.email(class="form-control is-invalid", placeholder="Email") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.email.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                {{ form.email(class="form-control", placeholder="Email") }}
+                                {% endif %}
+                            </div>
+                            <div class="form-group">
+                                {% if form.address.errors %}
+                                {{ form.address(class="form-control is-invalid", placeholder="Address") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.address.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                {{ form.address(class="form-control", placeholder="Address") }}
+                                {% endif %}
+                            </div>
+                        </fieldset>
+                        <div class="form-group text-right mb-4">
+                            <h2 class="text-muted">{{ cost }}</h2>
+                        </div>
+                        <div class="form-group">
+                            {{ form.submit(class="btn btn-info w-100") }}
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg"></div>
+            </div>
+        </div>
+    </div>
+{% endblock content_in %}

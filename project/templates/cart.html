@@ -1,0 +1,62 @@
+{% extends 'layout.html' %} {% block title %}| Cart {% endblock %} 
+{% block content_in %}
+    <div class="pt-5 pb-5 mb-5">
+        <div class="row">
+            <div class="col-lg text-center">
+                <h1 style="font-weight: 200;">
+                <i class="fas fa-shopping-cart"></i>&nbsp;&nbsp;Cart Items
+            </div>
+        </div>
+        <hr>
+    {% if "cart" not in session %}
+        <div class="m-5 p-5 text-center">
+            <h3 class="display-5" style="font-family: Arial, Helvetica, sans-serif;">Cart is Empty. Add something from our products</h3>
+            <a class="btn btn-info mb-5 pr-3 pl-3 rounded-pill" href="{{url_for('shop')}}" role="button">Browse Shopping</a>
+        </div>
+    {% else %}
+        <div class="m-5 pl-5 pr-5">
+            <table class="table table-borderless mb-5">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Product ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Cost</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for cart in cartItem %}
+                <tr>
+                    {% if cart.id < 10 %}
+                        <th scope="row">#P0{{ cart.id }}</th>
+                    {% else %}
+                        <th scope="row">#P{{ cart.id }}</th>
+                    {% endif %}                    <td class="text-left"><a href="{{ url_for('product',product_type=cart.type, product_name=cart.name)}} " class="navlink">{{cart.name}}</a></td>
+                    <td>{{cart.displayCost}}</td>
+                    <td class="text-center"><a href="{{ url_for('delete_cart', product_name=cart.name)}}" aria-describedby="delete" class="btn btn-danger">Remove</a></td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="container pt-lg-5">
+            <div class="row pt-3">
+                <div class="col-lg text-right">
+                    <a href="{{url_for('empty_cart',product_name = 'cart')}}" class="btn btn-danger w-100">Empty cart</a>
+                </div>
+                <div class="col-lg-5 text-right">
+                </div>
+                <div class="col-lg text-right">
+                    <h3 class="mb-4">{{ total }}</h3>
+                </div>
+                <div class="col-lg text-right">
+                    <a class="btn btn-warning mb-5 p-2 pl-4 pr-4 rounded-pill" href="{{ url_for('checkout')}}">Checkout</a>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    </div>
+
+    
+{% endblock content_in %}
+    

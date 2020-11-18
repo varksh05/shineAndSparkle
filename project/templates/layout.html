@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Shine & Sparkles {% block title %}{% endblock %}</title>
+        <!-- Google Font CSS-->
+        <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+        <!-- Bootstrap CSS-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+            integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ url_for('static', filename = 'style1.css')}}">
+        <!-- Animate CSS-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+            <div class="container">
+                <a class="navbar-brand" href="/"><i class="fas fa-gem"></i>&nbsp;&nbsp;Shine & Sparkles</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Products
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="{{ url_for('products', product_type = 'rings') }}">Ring</a>
+                                <a class="dropdown-item" href="{{ url_for('products', product_type = 'pendants')}}">Pendant</a>
+                                <a class="dropdown-item" href="{{ url_for('products', product_type = 'earrings')}}">Earrings</a>
+                                <a class="dropdown-item" href="{{ url_for('products', product_type = 'bracelets') }}">Bracelet</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="form-inline">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="btn btn-light mr-lg-2" href="{{ url_for('cart') }}">
+                                    <i class="fas fa-shopping-cart" style="font-size: 22px;">
+                                        {% if "len" in session %}
+                                        {% if session["len"] > 0 %}
+                                             <sup><span class="badge badge-info">{{session["len"]}}</span></sup>
+                                        {% endif %}
+                                        {% endif %}
+                                    </i>
+                                </a>
+                            </li>
+                            {% if session["user"] %}
+                            <li class="nav-item dropdown active">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-user-circle" style="font-size: 22px;"></i>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="{{ url_for('orders') }}">Orders</a>
+                                <a class="dropdown-item" href="{{ url_for('logout') }}">Logout</a>
+
+                            </div>
+                            </li>
+                            {% else %}
+                            <li class="nav-item active">
+                                <a class="btn btn-light mr-lg-2 text-dark" href="{{ url_for('login') }}">
+                                    Login
+                                </a>
+                            </li>
+                            {% endif %}
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        {% with messages = get_flashed_messages(with_categories = true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        {% block content_out %}<!-- Content of WebSite -->{% endblock %}
+        <main class="container-fluid">
+            {% block content_in %}<!-- Content of WebSite -->{% endblock %}
+        </main>
+
+        <footer id="footer">
+            <div class="container">
+                <div class="row pt-5 pb-5">
+
+                    <div class="col-md text-center text-md-left">
+                        <ul class="list-group">
+                            <h6 class="text-strong"><strong>Company</strong></h6>
+                            <a href="/aboutus" class="text-white">
+                                <li>About us</li>
+                            </a>
+                            <a href="#" class="text-white">
+                                <li>Terms and conditions</li>
+                            </a>
+                            <a href="#" class="text-white">
+                                <li>Shine & Sparkles Blog</li>
+                            </a>
+                        </ul>
+
+
+
+                    </div>
+                    <div class="col-md text-center text-md-right">
+                        <ul class="list-group">
+                            <h6 class="text-strong"><strong>Contacts</strong></h6>
+                            <li>+91 98765 43210</li>
+                            <li>support@shineandsparkles.com</li>
+                        </ul>
+
+                        <div class="pay">
+                            <i class="fab fa-cc-visa"></i>
+                            <i class="fab fa-cc-paypal"></i>
+                            <i class="fab fa-cc-mastercard"></i>
+                            <i class="fab fa-cc-apple-pay"></i>
+                        </div>
+
+
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row p-3 top-border">
+                    <div class="col-md text-center text-md-left">Copyright © 2020 by Shine & Sparkles. All rights
+                        reserved.
+                    </div>
+                    <div class="col-md text-center text-md-right">
+                        <ul class="social-links">
+                            <li><a href="#"><i class="fab fa-facebook-f"></a></i></li>
+                            <li><a href="#"><i class="fab fa-pinterest"></a></i></li>
+                            <li><a href="#"><i class="fab fa-instagram"></a></i></li>
+                            <li><a href="#"><i class="fab fa-twitter"></a></i></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </footer>
+
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+            integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+            crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/20e1667d94.js" crossorigin="anonymous"></script>
+    </body>
+
+</html>
